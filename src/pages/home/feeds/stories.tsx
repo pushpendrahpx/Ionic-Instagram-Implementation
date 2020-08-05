@@ -7,7 +7,7 @@ const StoryPreview: React.FC = ()=>{
     return <div style={{border:'2px solid #6415ad',padding:'0px',margin:'5px',borderRadius:'50%'}}>
         <IonCard  className='ion-activatable' style={{minWidth:'18vw',minHeight:'18vw',maxWidth:'18vw',maxHeight:'18vw',borderRadius:'50%',position: 'relative',overflow: 'hidden',margin:'2px'}}>
     <IonRippleEffect></IonRippleEffect>
-    <IonImg src='https://instagram.famd1-1.fna.fbcdn.net/v/t51.2885-19/s150x150/95589281_274861353543371_1524882603201527808_n.jpg?_nc_ht=instagram.famd1-1.fna.fbcdn.net&_nc_ohc=rU8C8QZ7iR8AX9ryzZ7&oh=e6cea04331c80ab6e44faa5347d7f52d&oe=5F3223F6' />
+    <IonImg src='https://instagram.famd1-1.fna.fbcdn.net/v/t51.2885-15/e35/116578614_103538124746528_7191687969033266789_n.jpg?_nc_ht=instagram.famd1-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=xVKpTcjjlOUAX-B5RZX&oh=e5917e47b1438f023e40a259199881db&oe=5F4F0C51' />
    
 </IonCard>
     </div>

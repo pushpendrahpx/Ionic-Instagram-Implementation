@@ -40,7 +40,7 @@ const ProfilePosts: React.FC = () => {
     while (images.length > 0)
     arrays.push(images.splice(0, size));
 
-    console.log(arrays)
+    // console.log(arrays)
 
 
   return (<div>
@@ -54,7 +54,7 @@ const ProfilePosts: React.FC = () => {
               {arrays.map(eachrow=>{
                   return <IonRow>
                       {eachrow.map((eachcol:string)=>{
-                          console.log(eachcol)
+                        //   console.log(eachcol)
                             return <Tile img={eachcol} />
                         })}
                   </IonRow>

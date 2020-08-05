@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, IonBackButton, IonMenuButton, IonIcon, IonLabel, IonButton, IonFabButton, IonCard, IonCardHeader, IonCardTitle, IonRouterLink, IonCardSubtitle, IonRippleEffect, IonCardContent, IonInfiniteScroll, IonInfiniteScrollContent, IonActionSheet } from '@ionic/react';
-import { chatboxOutline, sendOutline, cameraOutline, heartOutline, alertCircle, chatbubbleOutline, share, shareOutline, heartHalfOutline, heartDislikeOutline, menuOutline, trashOutline, caretForwardCircleOutline, closeOutline } from 'ionicons/icons';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, IonBackButton, IonMenuButton, IonIcon, IonLabel, IonButton, IonFabButton, IonCard, IonCardHeader, IonCardTitle, IonRouterLink, IonCardSubtitle, IonRippleEffect, IonCardContent, IonInfiniteScroll, IonInfiniteScrollContent, IonActionSheet, IonSlides, IonSlide, IonRefresher, IonRefresherContent } from '@ionic/react';
+import { chatboxOutline, sendOutline, cameraOutline, heartOutline, alertCircle, chatbubbleOutline, share, shareOutline, heartHalfOutline, heartDislikeOutline, menuOutline, trashOutline, caretForwardCircleOutline, closeOutline, chevronDownCircleOutline } from 'ionicons/icons';
 import Stories from './stories';
 type PostCards = {
     setShowActionSheet: ()=>void
@@ -28,10 +28,21 @@ const PostCards: React.FC<any> = (props:any)=>{
 
 
     </IonCardHeader>
-    <div className='ion-activatable' style={{position: 'relative',overflow: 'hidden',maxWidth:'100vw',border:'1px solid #dedede'}} >
-    <img src="https://firebasestorage.googleapis.com/v0/b/clonsta-a2627.appspot.com/o/images%2FIMG-20200729-WA0002.jpg?alt=media&token=32069080-8b71-4528-8d48-918dd0e1d4ec" />
-  <IonRippleEffect></IonRippleEffect>
-    </div>
+    
+    <IonSlides>
+      <IonSlide>
+      <div className='ion-activatable' style={{position: 'relative',overflow: 'hidden',maxWidth:'100vw',border:'1px solid #dedede'}} >
+        <img src="https://instagram.famd1-1.fna.fbcdn.net/v/t51.2885-15/e35/116578614_103538124746528_7191687969033266789_n.jpg?_nc_ht=instagram.famd1-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=xVKpTcjjlOUAX-B5RZX&oh=e5917e47b1438f023e40a259199881db&oe=5F4F0C51"/>
+        <IonRippleEffect></IonRippleEffect>
+      </div>
+      </IonSlide>
+      <IonSlide>
+      <div className='ion-activatable' style={{position: 'relative',overflow: 'hidden',maxWidth:'100vw',border:'1px solid #dedede'}} >
+        <img src="https://instagram.famd1-1.fna.fbcdn.net/v/t51.2885-15/e35/116578614_103538124746528_7191687969033266789_n.jpg?_nc_ht=instagram.famd1-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=xVKpTcjjlOUAX-B5RZX&oh=e5917e47b1438f023e40a259199881db&oe=5F4F0C51"/>
+        <IonRippleEffect></IonRippleEffect>
+      </div>
+      </IonSlide>
+    </IonSlides>
   
  
       
@@ -60,7 +71,9 @@ const PostCards: React.FC<any> = (props:any)=>{
 
 const Feeds: React.FC = () => {
      const [showActionSheet, setShowActionSheet] = useState(false);
-
+    let doRefresh = ()=>{
+      alert("Doing Refresh Function")
+    }
   return (
     <IonPage>
       <IonHeader >
@@ -83,6 +96,22 @@ const Feeds: React.FC = () => {
       </IonToolbar>
       </IonHeader>
       <IonContent>
+
+
+
+      <IonRefresher slot="fixed" onIonRefresh={doRefresh}>
+        <IonRefresherContent
+          pullingIcon={chevronDownCircleOutline}
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="Refreshing...">
+        </IonRefresherContent>
+      </IonRefresher>
+
+
+
+
+
             <Stories />
         {/* <ExploreContainer name="Tab 1 page" /> */}
 

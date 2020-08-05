@@ -60,8 +60,18 @@ import Home from './pages/home/home';
 
 
 import FIREBASE_CONFIG from './FIREBASE_CONFIG.json'
+import HomeContext from './ContextAPIS/HomeContext';
 
-var firebaseConfig = FIREBASE_CONFIG;
+var firebaseConfig = {
+  "apiKey": "AIzaSyDpz1ffDn8FQCneAz4yEFsit3pL3v-DTAc",
+  "authDomain": "clonsta-a2627.firebaseapp.com",
+  "databaseURL": "https://clonsta-a2627.firebaseio.com/",
+  "projectId": "clonsta-a2627",
+  "storageBucket": "clonsta-a2627.appspot.com",
+  "messagingSenderId": "546682191937",
+  "appId": "1:546682191937:web:2ce9219aa2286a99f486c0",
+  "measurementId": "G-PL08ZMDZSG"
+};
 
 firebase.initializeApp(firebaseConfig);
 
@@ -70,51 +80,56 @@ interface SD{
 }
 
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter >
-      {/* <IonTabs> */}
-        <IonRouterOutlet>
-          <Route path='/welcome' component={WelcomeComponent} />
-          <Route path="/signin" render={()=>{
-            return <SignIn firebase={firebase} />
-          }} exact={true} />
-          <Route path="/signup" render={()=>{
-            return <SignUp firebase={firebase} />
-          }} exact={true} />
-          <Route path="/home/*" render={()=>{
-            return <Home firebase={firebase} />
-          }} exact={true} />
-          <Route path="/tab1" component={Tab1} exact={true} />
-          <Route path="/tab2" component={Tab2} exact={true} />
-          <Route path="/tab3" component={Tab3} />
-          <Route path="/" render={() => <Redirect to="/welcome" />} exact={true} />
-        </IonRouterOutlet>
-        {/* <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/signin">
-            <IonIcon icon={homeOutline} />
-            <IonLabel>Home</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab4" href="/tab3">
-            <IonIcon icon={chatboxOutline} />
-            <IonLabel>Chats</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab2">
-            <IonIcon icon={notificationsOutline} />
-            <IonLabel>Activity</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab1">
-            <IonIcon icon={personOutline} />
-            <IonLabel>Account</IonLabel>
-          </IonTabButton>
-        </IonTabBar> */}
-      {/* </IonTabs> */}
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = (props:any) => {
+  console.log(props)
+
+  return (
+    <IonApp>
+      <IonReactRouter >
+        {/* <IonTabs> */}
+          <IonRouterOutlet>
+            <Route path='/welcome' component={WelcomeComponent} />
+            <Route path="/signin" render={()=>{
+              return <SignIn firebase={firebase} />
+            }} exact={true} />
+            <Route path="/signup" render={()=>{
+              return <SignUp firebase={firebase} />
+            }} exact={true} />
+            <Route path="/home/*" render={()=>{
+              return <Home firebase={firebase} />
+              
+            }} exact={true} />
+            <Route path="/tab1" component={Tab1} exact={true} />
+            <Route path="/tab2" component={Tab2} exact={true} />
+            <Route path="/tab3" component={Tab3} />
+            <Route path="/" render={() => <Redirect to="/welcome" />} exact={true} />
+          </IonRouterOutlet>
+          {/* <IonTabBar slot="bottom">
+            <IonTabButton tab="tab1" href="/signin">
+              <IonIcon icon={homeOutline} />
+              <IonLabel>Home</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="tab4" href="/tab3">
+              <IonIcon icon={chatboxOutline} />
+              <IonLabel>Chats</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="tab3" href="/tab2">
+              <IonIcon icon={notificationsOutline} />
+              <IonLabel>Activity</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="tab2" href="/tab1">
+              <IonIcon icon={personOutline} />
+              <IonLabel>Account</IonLabel>
+            </IonTabButton>
+          </IonTabBar> */}
+        {/* </IonTabs> */}
+      </IonReactRouter>
+    </IonApp>
+  );
+}
 const mapStateToProps = (state:any) =>{
   return({
      ...state
    });
   };
-export default connect(mapStateToProps)(App);
+export default (App);

@@ -1,8 +1,29 @@
-import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonImg, IonButton, IonInput, IonLabel, IonTextarea, IonSelectOption, IonSelect, IonItem, IonButtons, IonBackButton } from '@ionic/react';
+import React, { useContext } from 'react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonImg, IonButton, IonInput, IonLabel, IonTextarea, IonSelectOption, IonSelect, IonItem, IonButtons, IonBackButton, IonAvatar } from '@ionic/react';
 import { Link } from 'react-router-dom';
+import HomeContext from '../../../ContextAPIS/HomeContext';
 
 const EditProfile: React.FC = () => {
+
+    // State Defined
+    /* ------------------------------------------------------------- */
+
+    /* ------------------------------------------------------------- */
+
+
+
+    
+    let userContextData = useContext(HomeContext);
+    // console.log(userContextData)
+    
+    let firestoreObject = userContextData.userFirestore;
+    // console.log(imageURL.photoURL)
+    // if(imageURL){
+    //     // console.log(imageURL.photoURL)
+    // }   
+    console.log("S")
+    console.log("D")
+
   return (
     <IonPage>
       <IonHeader>
@@ -18,17 +39,19 @@ const EditProfile: React.FC = () => {
       <IonContent>
        <div style={{display:'flex'}}>
            <div style={{paddingTop:'16px',paddingLeft:'16px'}}>
-               <IonImg style={{width:'64px',height:'64px',border:'1px solid #dedede',borderRadius:'50%',padding:'2px'}} src={'https://instagram.fcgk2-1.fna.fbcdn.net/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=instagram.fcgk2-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=PUxEnx_n8rEAX_aom4c&oh=590a496111bb70bc5c34d6b100e95d62&oe=5F4F000F&ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2'} />
-           </div>
+                <IonAvatar>
+                <img style={{width:'64px',height:'64px',border:'1px solid #dedede',padding:'2px'}} src={firestoreObject.photoURL} />
+                </IonAvatar>
+            </div>
            <div style={{paddingTop:'20px',paddingLeft:'16px'}}>
-               <IonTitle>pushpendrahpx</IonTitle>
+               <IonTitle>{firestoreObject.username}</IonTitle>
                <IonButton color='dark' style={{width:'60vw'}}>Change Profile Photo</IonButton>
            </div>
        </div><br />
        <div style={{padding:'20px',paddingBottom:0,paddingTop:0}} className='form-group'>
            <IonLabel>Name</IonLabel>
         <div style={{padding:'5px',paddingRight:0,paddingLeft:0}}>
-            <IonInput placeholder='Enter Full Name' style={{border:'2px solid #dedede',borderRadius:'5px'}} type='text' />
+            <IonInput placeholder={firestoreObject.name} style={{border:'2px solid #dedede',borderRadius:'5px'}} type='text' value={firestoreObject.name} />
         </div>
         <small style={{color:'grey'}}>
         Help people discover your account by using the name you're known by: either your full name, nickname, or business name.
@@ -41,7 +64,7 @@ const EditProfile: React.FC = () => {
        <div style={{padding:'20px',paddingBottom:0,paddingTop:0}} className='form-group'>
            <IonLabel>Username</IonLabel>
         <div style={{padding:'5px',paddingRight:0,paddingLeft:0}}>
-            <IonInput placeholder='Enter username' style={{border:'2px solid #dedede',borderRadius:'5px'}} type='text' />
+            <IonInput placeholder='Enter username' style={{border:'2px solid #dedede',borderRadius:'5px'}} type='text' value={firestoreObject.username} />
         </div>
        </div>
 
@@ -50,7 +73,7 @@ const EditProfile: React.FC = () => {
        <div style={{padding:'20px',paddingBottom:0,paddingTop:0}} className='form-group'>
            <IonLabel>Website</IonLabel>
         <div style={{padding:'5px',paddingRight:0,paddingLeft:0}}>
-            <IonInput placeholder='Website link' style={{border:'2px solid #dedede',borderRadius:'5px'}} type='text' />
+            <IonInput placeholder='Website link' style={{border:'2px solid #dedede',borderRadius:'5px'}} type='text' value={firestoreObject.website} />
         </div>
         
        </div>
@@ -58,7 +81,7 @@ const EditProfile: React.FC = () => {
         <div style={{padding:'20px',paddingBottom:0,paddingTop:0}} className='form-group'>
             <IonLabel>Bio</IonLabel>
         <div style={{padding:'5px',paddingRight:0,paddingLeft:0}}>
-            <IonTextarea placeholder='Enter your Bio' style={{border:'2px solid #dedede',borderRadius:'5px'}}  />
+            <IonTextarea placeholder='Enter your Bio' style={{border:'2px solid #dedede',borderRadius:'5px'}} value={firestoreObject.bio}  />
         </div>
         
         </div>
@@ -76,7 +99,7 @@ const EditProfile: React.FC = () => {
        <div style={{padding:'20px',paddingBottom:0,paddingTop:0}} className='form-group'>
            <IonLabel>Email ID</IonLabel>
         <div style={{padding:'5px',paddingRight:0,paddingLeft:0}}>
-            <IonInput placeholder='Enter Email ID' style={{border:'2px solid #dedede',borderRadius:'5px'}} type='text' />
+            <IonInput placeholder='Enter Email ID' style={{border:'2px solid #dedede',borderRadius:'5px'}} type='text' value={firestoreObject.email} />
         </div>
         
        </div>
@@ -86,7 +109,7 @@ const EditProfile: React.FC = () => {
        <div style={{padding:'20px',paddingBottom:0,paddingTop:0}} className='form-group'>
            <IonLabel>Phone Number</IonLabel>
         <div style={{padding:'5px',paddingRight:0,paddingLeft:0}}>
-            <IonInput placeholder='Enter Phone Number' style={{border:'2px solid #dedede',borderRadius:'5px'}} type='text' />
+            <IonInput placeholder='Enter Phone Number' style={{border:'2px solid #dedede',borderRadius:'5px'}} type='text' value={firestoreObject.phoneNumber} />
         </div>
         
        </div>
@@ -98,7 +121,7 @@ const EditProfile: React.FC = () => {
         <div style={{padding:'5px',paddingRight:0,paddingLeft:0}} >
             <IonItem>
             <IonLabel>Gender</IonLabel>
-            <IonSelect style={{border:'2px solid #dedede',borderRadius:'5px'}} placeholder="Select Your Gender" okText="Save" cancelText="Cancel">
+            <IonSelect style={{border:'2px solid #dedede',borderRadius:'5px'}} placeholder="Select Your Gender" okText="Save" cancelText="Cancel" value={firestoreObject.gender}>
                 <IonLabel></IonLabel>
                 <IonSelectOption>
                     Male
@@ -117,17 +140,6 @@ const EditProfile: React.FC = () => {
 
 
 
-
-
-
-
-       <div style={{padding:'20px',paddingBottom:0,paddingTop:0}} className='form-group'>
-           <IonLabel>Phone Number</IonLabel>
-        <div style={{padding:'5px',paddingRight:0,paddingLeft:0}}>
-            <IonInput placeholder='Enter Phone Number' style={{border:'2px solid #dedede',borderRadius:'5px'}} type='text' />
-        </div>
-        
-       </div>
 
             <div style={{textAlign:'center'}}> 
             <IonButton size='large' color='primary' style={{fontSize:'16px',margin:'20px'}}>Save</IonButton>

@@ -2,6 +2,7 @@ import React from 'react'
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonSegment, IonSegmentButton, IonIcon } from '@ionic/react';
 import { chatbubbleOutline, layersOutline, videocamOutline, searchOutline, caretForwardCircleOutline, trendingUpOutline } from 'ionicons/icons';
 import { Link } from 'react-router-dom';
+import ProfilePosts from '../profile/ProfilePosts';
 
 
 const Explore: React.FC = ()=>{
@@ -33,6 +34,8 @@ const Explore: React.FC = ()=>{
             <IonIcon icon={trendingUpOutline} />
         </IonSegmentButton>
     </IonSegment>
+
+    <ProfilePosts />
     </IonContent>
   </IonPage>
 }
