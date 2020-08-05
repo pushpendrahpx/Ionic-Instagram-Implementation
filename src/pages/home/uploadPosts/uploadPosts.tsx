@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonSlides, IonSlide, IonButton, IonRippleEffect, IonIcon, IonTextarea, IonProgressBar } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonSlides, IonSlide, IonButton, IonRippleEffect, IonIcon, IonTextarea, IonProgressBar, IonText } from '@ionic/react';
 import { Prompt } from 'react-router';
 import HomeContext from '../../../ContextAPIS/HomeContext';
-import { trashBinOutline, cloudUploadOutline } from 'ionicons/icons';
+import { trashBinOutline, cloudUploadOutline, addOutline } from 'ionicons/icons';
 
 
 let UploadPostsToFirestoreDatabase = async (post:any)=>{
@@ -144,12 +144,11 @@ const UploadPosts: React.FC<any> = (props:any) => {
                                 })
 
                                 if(uploadResult){
+
                                     alert("UPLOADED AND POSTED");
                                     setImageSelected({length:0})
                                     setPreventMove(false)
                                     setSelectedImageURL({images:['']})
-
-
                                     setButton(true)
                                 }else{
                                     alert("SOMETHING FAILED")
@@ -242,12 +241,12 @@ const UploadPosts: React.FC<any> = (props:any) => {
                          
                       </IonCardContent>
 
-                      <div style={{textAlign:'center'}}>
+                      <div style={{textAlign:'center'}} id='submit_post_id'>
                           <IonButton color='primary' onClick={UploadPhotoToFirebaseStorage} disabled={button === true ? false:true}> <IonIcon style={{margin:'10px'}} icon={cloudUploadOutline} /> Submit Post</IonButton>
                       </div>
                   </IonCard>
                   {
-                        imageSelected.length > 0 ? <div style={{textAlign:"center",marginTop:'40px'}}><IonButton color='danger' onClick={(event:any)=>{
+                        imageSelected.length > 0 ? <div style={{textAlign:"center",marginTop:'40px'}}><IonButton color='danger' disabled={button === true ? false:true} onClick={(event:any)=>{
                             let answer = window.confirm("Want to cancel this Upload ??");
                             if(answer){
                                 setImageSelected({length:0})
@@ -255,7 +254,7 @@ const UploadPosts: React.FC<any> = (props:any) => {
                                 setSelectedImageURL({images:['']})
                             }
                             
-                        }}><IonIcon style={{margin:'5px'}} icon={trashBinOutline} /> Cancel Upload</IonButton></div> : ''
+                        }}><IonIcon style={{margin:'5px'}} icon={trashBinOutline} /> Cancel Post</IonButton></div> : ''
                     }
                     </div>
         :
@@ -269,13 +268,15 @@ const UploadPosts: React.FC<any> = (props:any) => {
                         
 
                         <div style={{textAlign:"center"}}>
-                        <IonButton color='dark' onClick={(e)=>{
+                        <IonButton color='dark'disabled={false} onClick={(e)=>{
                             
                             let temp =  window.document.getElementById("__UPLOAD_POST_PHOTO__") as HTMLInputElement
                             temp.click()
                             
-                        }}>
-                            Upload Photo
+                        }}> 
+                            <IonIcon icon={addOutline} />
+                            <br />
+                            <IonText>Upload Photo</IonText>
                         </IonButton>
                         </div>
                     </div>
