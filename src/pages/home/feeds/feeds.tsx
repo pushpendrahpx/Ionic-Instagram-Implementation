@@ -6,7 +6,7 @@ type PostCards = {
     setShowActionSheet: ()=>void
 }
 const PostCards: React.FC<any> = (props:any)=>{
-  console.log(props)
+  // console.log(props)
     return <IonCard style={{boxShadow:'none',border:'1px solid #dedede',margin:0}}>
     <IonCardHeader style={{display:'flex'}}>
 

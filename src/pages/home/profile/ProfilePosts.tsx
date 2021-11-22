@@ -51,11 +51,11 @@ const ProfilePosts: React.FC = () => {
                   <Tile />
               </IonRow> */}
               
-              {arrays.map(eachrow=>{
+              {arrays.map((eachrow,index)=>{
                   return <IonRow>
-                      {eachrow.map((eachcol:string)=>{
+                      {eachrow.map((eachcol:string,indexc)=>{
                         //   console.log(eachcol)
-                            return <Tile img={eachcol} />
+                            return <Tile key={index+"-"+indexc} img={eachcol} />
                         })}
                   </IonRow>
               })}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { IonPage, IonText, IonHeader, IonToolbar, IonTitle, IonList, IonItemDivider, IonItem, IonInput, IonButton, IonButtons, IonBackButton, IonSpinner, IonToast, IonRouterLink } from '@ionic/react'
 import { Link, Redirect } from 'react-router-dom';
-
+import loginIllustration from "./../../assets/login.png"
 // set the default values for the controls
 let initialValues = {
     email: "",
@@ -80,7 +80,7 @@ const SignIn: React.FC<any> = (props:any)=>{
                 
                 <div style={{maxWidth:'600px',margin:'0 auto',border:'1px solid #dedede',padding:'10px',borderRadius:'5px'}}>
                 <h1 style={{fontSize:'64px',fontWeight:300}}>Login</h1>
-                
+
                 <form  onSubmit={loginNow} >
                     <a style={{color:'red'}}>{error}</a>
                     <IonList style={{padding:'10px'}}>
@@ -88,12 +88,12 @@ const SignIn: React.FC<any> = (props:any)=>{
                             <IonInput   type='email'
                                         id='login_email' 
                                         placeholder="Enter Email ID" 
-                                        onIonChange={(e:any) =>{setEmail(e.target.value)}} />
+                                        onIonChange={(e:any) =>{setEmail(e.target.value)}} value={email} />
                            
                         </IonItem>
                         <br />
                         <IonItem>
-                            <IonInput id='login_password' type='password' placeholder="Enter password" onIonChange={(e:any) =>{setPassword(e.target.value)}}/>
+                            <IonInput id='login_password' type='password' value={password} placeholder="Enter password" onIonChange={(e:any) =>{setPassword(e.target.value)}}/>
                             
                         </IonItem>
                         <br />
@@ -102,6 +102,11 @@ const SignIn: React.FC<any> = (props:any)=>{
                             {loading === true ?  <IonSpinner name="crescent" /> : 'Sign In'}
                                 {/* Sign In */}
                             </IonButton>
+                            
+                            <IonButton color="success"  expand="full" shape='round' style={{fontWeight:300,marginTop:"10px"}} onClick={()=>{
+                                setEmail("askillys@gmail.com")
+                                setPassword("googleuser")
+                            }}>Login as guest</IonButton>
                         
                     </IonList>
                 </form>
@@ -127,6 +132,7 @@ const SignIn: React.FC<any> = (props:any)=>{
                     message={showToast1.value} 
                     duration={5000}
                     />
+                    
         </IonPage>)
     }
 
